@@ -18,7 +18,7 @@ const BirthdayApp = () => {
   const audioRef = useRef(null);
 
   // Birthday date: August 9, 2025
-  const birthdayDate = dayjs('2025-08-09T00:00:00');
+  const birthdayDate = dayjs('2025-08-04T00:00:00');
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -360,7 +360,7 @@ const BirthdayApp = () => {
             onPlay={() => setIsPlaying(true)}
           >
             <source src="https://raw.githubusercontent.com/Harishkhuva/vedu-s-birthday/main/Happy_birthday.mp3" type="audio/mpeg" />
-            <source src="./birthday-music.ogg" type="audio/ogg" />
+            <source src="/birthday-music.ogg" type="audio/ogg" />
             Your browser does not support the audio element.
           </audio>
           <button
@@ -390,16 +390,32 @@ const BirthdayApp = () => {
           </h2>
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[1, 2, 3].map((i) => (
-                <div key={i} className="relative group overflow-hidden rounded-2xl shadow-2xl hover-lift">
-                  <div className="h-72 bg-gradient-to-br from-pink-300 via-purple-300 to-yellow-300 flex items-center justify-center relative">
-                    <span className="text-white text-xl font-poppins font-semibold z-10">Memory {i}</span>
-                    <div className="absolute inset-0 bg-gradient-to-t from-purple-900/30 via-transparent to-pink-900/20"></div>
+              {[
+                { id: 1, src: "https://raw.githubusercontent.com/Harishkhuva/vedu-s-birthday/main/image-2.jpg", title: "Sweet Memory 1", description: "A beautiful moment captured in time 💖" },
+                { id: 2, src: "https://raw.githubusercontent.com/Harishkhuva/vedu-s-birthday/main/image-3.jpg", title: "Sweet Memory 2", description: "Laughing together and making memories 😊" },
+                { id: 3, src: "https://raw.githubusercontent.com/Harishkhuva/vedu-s-birthday/main/image-1.jpg", title: "Sweet Memory 3", description: "Friendship moments that last forever 🌟" }
+              ].map((memory) => (
+                <div key={memory.id} className="relative group overflow-hidden rounded-2xl shadow-2xl hover-lift">
+                  <div className="h-72 relative">
+                    <img 
+                      src={memory.src} 
+                      alt={memory.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      onError={(e) => {
+                        // Fallback to gradient background if image fails to load
+                        e.target.style.display = 'none';
+                        e.target.nextSibling.style.display = 'flex';
+                      }}
+                    />
+                    <div className="h-full bg-gradient-to-br from-pink-300 via-purple-300 to-yellow-300 items-center justify-center relative hidden">
+                      <span className="text-white text-xl font-poppins font-semibold z-10">{memory.title}</span>
+                      <div className="absolute inset-0 bg-gradient-to-t from-purple-900/30 via-transparent to-pink-900/20"></div>
+                    </div>
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-purple-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end">
                     <div className="text-white p-6 font-poppins transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                      <h3 className="text-lg font-semibold mb-2">Sweet Memory {i}</h3>
-                      <p className="text-sm opacity-90">A beautiful moment captured in time 💖</p>
+                      <h3 className="text-lg font-semibold mb-2">{memory.title}</h3>
+                      <p className="text-sm opacity-90">{memory.description}</p>
                     </div>
                   </div>
                 </div>
