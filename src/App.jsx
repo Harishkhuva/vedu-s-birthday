@@ -18,7 +18,7 @@ const BirthdayApp = () => {
   const audioRef = useRef(null);
 
   // Birthday date: August 9, 2025
-  const birthdayDate = dayjs('2025-08-09T00:00:00');
+  const birthdayDate = dayjs('2025-08-08T00:00:00');
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -359,7 +359,7 @@ const BirthdayApp = () => {
             onPause={() => setIsPlaying(false)}
             onPlay={() => setIsPlaying(true)}
           >
-            <source src="/birthday-music.mp3" type="audio/mpeg" />
+            <source src="/Happy_birthday.mp3" type="audio/mpeg" />
             <source src="/birthday-music.ogg" type="audio/ogg" />
             Your browser does not support the audio element.
           </audio>
