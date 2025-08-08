@@ -360,7 +360,7 @@ const BirthdayApp = () => {
             onPlay={() => setIsPlaying(true)}
           >
             <source src="Happy_birthday.mp3" type="audio/mpeg" />
-            <source src="/birthday-music.ogg" type="audio/ogg" />
+            <source src="./birthday-music.ogg" type="audio/ogg" />
             Your browser does not support the audio element.
           </audio>
           <button
