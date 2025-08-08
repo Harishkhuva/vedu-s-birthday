@@ -18,7 +18,7 @@ const BirthdayApp = () => {
   const audioRef = useRef(null);
 
   // Birthday date: August 9, 2025
-  const birthdayDate = dayjs('2025-08-04T00:00:00');
+  const birthdayDate = dayjs('2025-08-02T00:00:00');
 
   useEffect(() => {
     const timer = setInterval(() => {
